@@ -1,0 +1,126 @@
+{
+  "tenants": [
+    { "id": "t_a", "name": "Northwind Logistics" },
+    { "id": "t_b", "name": "Atlas Fleet" }
+  ],
+  "users": [
+    { "id": "u_admin", "name": "Sarah Admin", "role": "admin" },
+    { "id": "u_mgr_a", "name": "David Manager", "role": "manager", "tenantId": "t_a" },
+    { "id": "u_an_b", "name": "Maya Analyst", "role": "analyst", "tenantId": "t_b" }
+  ],
+  "workOrders": [
+    {
+      "id": "wo_1001",
+      "title": "Brake inspection - Unit 42",
+      "description": "Squeal under load; check pads and rotors.",
+      "status": "in_progress",
+      "priority": "high",
+      "assigneeId": "u_mgr_a",
+      "tenantId": "t_a",
+      "dueDate": "2026-06-20T00:00:00.000Z",
+      "createdAt": "2026-06-10T00:00:00.000Z",
+      "updatedAt": "2026-06-12T12:00:00.000Z"
+    },
+    {
+      "id": "wo_1002",
+      "title": "GPS module replacement - Unit 17",
+      "description": "Unit 17 reporting intermittent GPS signal loss. Replace antenna module.",
+      "status": "new",
+      "priority": "medium",
+      "assigneeId": "u_mgr_a",
+      "tenantId": "t_a",
+      "dueDate": "2026-06-22T00:00:00.000Z",
+      "createdAt": "2026-06-11T00:00:00.000Z",
+      "updatedAt": "2026-06-11T00:00:00.000Z"
+    },
+    {
+      "id": "wo_1003",
+      "title": "Quarterly compliance audit - Fleet B",
+      "description": "Prepare documentation and vehicle logs for Q2 regulatory review.",
+      "status": "blocked",
+      "priority": "critical",
+      "assigneeId": "u_an_b",
+      "tenantId": "t_b",
+      "dueDate": "2026-06-18T00:00:00.000Z",
+      "createdAt": "2026-06-08T00:00:00.000Z",
+      "updatedAt": "2026-06-14T00:00:00.000Z"
+    },
+    {
+      "id": "wo_1004",
+      "title": "Oil change - Unit 09",
+      "description": "Routine oil change at 50K km interval.",
+      "status": "completed",
+      "priority": "low",
+      "assigneeId": "u_mgr_a",
+      "tenantId": "t_a",
+      "dueDate": "2026-06-12T00:00:00.000Z",
+      "createdAt": "2026-06-05T00:00:00.000Z",
+      "updatedAt": "2026-06-12T00:00:00.000Z"
+    },
+    {
+      "id": "wo_1005",
+      "title": "Driver onboarding - M. Torres",
+      "description": "Complete safety orientation and system access provisioning for new hire.",
+      "status": "new",
+      "priority": "medium",
+      "tenantId": "t_b",
+      "dueDate": "2026-06-25T00:00:00.000Z",
+      "createdAt": "2026-06-13T00:00:00.000Z",
+      "updatedAt": "2026-06-13T00:00:00.000Z"
+    }
+  ],
+  "notes": [
+    {
+      "id": "n_1",
+      "workOrderId": "wo_1001",
+      "authorId": "u_mgr_a",
+      "body": "Parts ordered; ETA 2 days.",
+      "createdAt": "2026-06-12T14:00:00.000Z"
+    },
+    {
+      "id": "n_2",
+      "workOrderId": "wo_1003",
+      "authorId": "u_an_b",
+      "body": "Waiting on maintenance logs from depot supervisor.",
+      "createdAt": "2026-06-14T09:30:00.000Z"
+    }
+  ],
+  "audits": [
+    {
+      "id": "a_1",
+      "entityType": "work_order",
+      "entityId": "wo_1001",
+      "action": "create",
+      "actorId": "u_mgr_a",
+      "timestamp": "2026-06-10T08:00:00.000Z",
+      "metadata": {}
+    },
+    {
+      "id": "a_2",
+      "entityType": "work_order",
+      "entityId": "wo_1001",
+      "action": "update_status",
+      "actorId": "u_mgr_a",
+      "timestamp": "2026-06-12T12:05:00.000Z",
+      "metadata": { "from": "new", "to": "in_progress" }
+    },
+    {
+      "id": "a_3",
+      "entityType": "work_order",
+      "entityId": "wo_1003",
+      "action": "update_status",
+      "actorId": "u_an_b",
+      "timestamp": "2026-06-14T09:00:00.000Z",
+      "metadata": { "from": "in_progress", "to": "blocked" }
+    },
+    {
+      "id": "a_4",
+      "entityType": "work_order",
+      "entityId": "wo_1004",
+      "action": "update_status",
+      "actorId": "u_mgr_a",
+      "timestamp": "2026-06-12T10:00:00.000Z",
+      "metadata": { "from": "in_progress", "to": "completed" }
+    }
+  ]
+}
